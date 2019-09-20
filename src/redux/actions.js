@@ -21,15 +21,17 @@ export const fetchDataUserAction = async (userId, dispatch) => {
 };
 
 export const toggleFavAction = (user, state, dispatch) => {
-	const userInFavourites = state.favourites.includes(user);
+	const userInFavourites = state.favourites.find(fav => fav.id === user.id);
 	let dispatchObj = {
 		type: "ADD_FAV",
 		payload: user
 	};
-	if (userInFavourites)
-	dispatchObj = {
-		type: "REMOVE_FAV",
-		payload: state.favourites.filter(fav => fav.id !== user.id)
-	};
+	if (userInFavourites) {
+		dispatchObj = {
+			type: "REMOVE_FAV",
+			payload: state.favourites.filter(fav => fav.id !== user.id)
+		};
+	}
+
 	return dispatch(dispatchObj);
 };

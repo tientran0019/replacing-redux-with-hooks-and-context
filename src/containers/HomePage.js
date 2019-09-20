@@ -23,7 +23,7 @@ export default function HomePage() {
 
 	return (
 		<React.Fragment>
-			<React.Suspense fallback={<div>Loading...</div>}>
+			<React.Suspense fallback={<div className="loading">Loading...</div>}>
 				<div className="user-layout">
 					<UsersList {...props} />
 				</div>
